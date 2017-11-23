@@ -1,0 +1,33 @@
+{
+  "name": "aml",
+  "version": "1.0.0",
+  "description": "a array manipulation language for js",
+  "main": "insertInto.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jazzysnail/aml.js.git"
+  },
+  "keywords": [
+    "JS",
+    "AML"
+  ],
+  "author": "Leon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jazzysnail/aml.js/issues"
+  },
+  "homepage": "https://github.com/jazzysnail/aml.js#readme",
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-latest": "^6.24.1",
+    "lodash": "^4.17.4",
+    "rollup-plugin-babel": "^3.0.2"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0"
+  }
+}
