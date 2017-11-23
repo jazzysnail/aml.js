@@ -1,4 +1,4 @@
-import $select from './select/index.js'
+import $select from './src/select/index.js'
 
 export {
   $select
