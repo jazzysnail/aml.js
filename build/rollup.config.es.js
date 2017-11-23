@@ -1,13 +1,8 @@
-import babel from 'rollup-plugin-babel'
+import base from './rollup.config.base.js'
 
-export default {
-  input: 'main.js',
+export default Object.assign(base, {
   output: {
     file: 'dist/aml.es.js',
     format: 'es'
-    // 'amd', 'cjs', 'es', 'iife', 'umd'
-  },
-  plugins: [
-    babel()
-  ]
-}
+  }
+})
