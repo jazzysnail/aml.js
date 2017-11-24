@@ -1,6 +1,5 @@
+var aml = (function (exports) {
 'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
@@ -17764,7 +17763,7 @@ var union$2 = function (arr) {
   }
 };
 
-var $select$1 = function (arr) {
+var index = function (arr) {
   for (var _len = arguments.length, keys = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     keys[_key - 1] = arguments[_key];
   }
@@ -17797,17 +17796,13 @@ var $select$1 = function (arr) {
   }
 };
 
-var main = {
-  $select: $select$1,
-  install: function install() {
-    if (window) {
-      Object.assign(window, this);
-    } else {
-      // const { install, ...api } = this
-      Object.assign(global, this);
-    }
-  }
-};
+function install() {
+  Object.assign(window, this);
+}
 
-exports.$select = $select$1;
-exports['default'] = main;
+exports.$select = index;
+exports.install = install;
+
+return exports;
+
+}({}));

@@ -7,7 +7,11 @@ export {
 export default {
   $select,
   install () {
-    // const { install, ...api } = this
-    Object.assign(global, this)
+    if (window) {
+      Object.assign(window, this)
+    } else {
+      // const { install, ...api } = this
+      Object.assign(global, this)
+    }
   }
 }

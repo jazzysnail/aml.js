@@ -4,8 +4,9 @@
   "description": "a array manipulation language for js",
   "main": "insertInto.js",
   "scripts": {
-    "dev": "rollup -c build/rollup.config.cjs.js",
-    "build": "rollup -c build/rollup.config.cjs.js",
+    "dev": "rollup -c build/rollup.config.js",
+    "build": "rollup -c build/rollup.config.js",
+    "build-iife": "rollup -c build/rollup.config.iife.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,7 +28,9 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-latest": "^6.24.1",
     "lodash": "^4.17.4",
-    "rollup-plugin-babel": "^3.0.2"
+    "lodash-es": "^4.17.4",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0"
   },
   "dependencies": {
     "babel-core": "^6.26.0"

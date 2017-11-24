@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 import { isArray } from '../util/Type.js'
 import variable from './variable'
 import where from './where'

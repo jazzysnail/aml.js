@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 import { isArray } from '../util/Type.js'
 /**
  * 以数组为入参进行调用
