@@ -120,3 +120,4 @@ $insertInto(array, {key: 2}, val => val.key === 1)
 ```
 
 ## 更多的 API 开发中...
+欢迎加入，以及星星。

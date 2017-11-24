@@ -4,6 +4,8 @@
   "description": "a array manipulation language for js",
   "main": "insertInto.js",
   "scripts": {
+    "dev": "rollup -c build/rollup.config.cjs.js",
+    "build": "rollup -c build/rollup.config.cjs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
