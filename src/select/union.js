@@ -1,6 +1,12 @@
 import { cloneDeep } from 'lodash-es'
 import { isArray } from '../util/Type.js'
 
+
+/**
+ * 去重合并
+ * @arr  {[Array]}
+ * @return {[this]}
+ */
 export default function (arr) {
   if (isArray(arr, 1)) {
     let _arr = cloneDeep(arr)

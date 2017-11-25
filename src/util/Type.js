@@ -1,5 +1,47 @@
 import { TypeError } from './Error.js'
 
+/**
+ * @param {[any]}
+ * @return {[String]} TypeName
+ */
+function Type (x) {
+  if (isPrimitive(x)) {
+    return typeof x
+  } else if (isArray(x, false)) {
+    return 'array'
+  } else {
+    return 'object'
+  }
+}
+
+/**
+ * @_constructor {[constructor]}
+ */
+function TypeFactory (_constructor) {
+  return function (x, Throw) {
+    if (typeof x === _constructor.name.toLowerCase()) {
+      return true
+    } else {
+      if (x instanceof _constructor) {
+        return true
+      } else {
+        if (Throw) TypeError(_constructor.name.toLowerCase(), Type(x));
+        return false
+      }
+    }
+  }
+}
+
+/**
+ * @x  {[any]}
+ */
+function isPrimitive (x) {
+  return (typeof x !== 'object')
+}
+
+/**
+ * @x  {[any]}
+ */
 function isArray (x, Throw) {
   if (Array.isArray(x)) {
     return true
@@ -7,46 +49,17 @@ function isArray (x, Throw) {
     if (Throw) TypeError('array', Type(x));
     return false
   }
-  // 判断是不是我们自身构建的新 Array
-  // else if (x instanceof this){
-
-  // }
-  // return
 }
 
-function isString (x, Throw) {
-  if (typeof x === 'string') {
-    return true
-  } else {
-    if (x instanceof String) {
-      return true
-    } else {
-      if (Throw) TypeError('string', Type(x));
-      return false
-    }
-  }
-}
+/**
+ * @x  {[any]}
+ */
+const isFunction = TypeFactory(Function)
 
-function isFunction (x, Throw) {
-  if (typeof x === 'function') {
-    return true
-  } else {
-    if (x instanceof Function) {
-      return true
-    } else {
-      if (Throw) TypeError('function', Type(x));
-      return false
-    }
-  }
-}
-
-function Type (x) {
-  if (typeof x !== 'object') {
-    return typeof x
-  } else if (Array.isArray(x)) {
-    return 'array'
-  }
-}
+/**
+ * @x  {[any]}
+ */
+const isString = TypeFactory(String)
 
 export {
   isArray,

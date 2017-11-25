@@ -17627,6 +17627,48 @@ function TypeError$1(expectedType, realType) {
   console.error(new Error("[TypeError] need a " + expectedType + ", got a " + realType + "."));
 }
 
+/**
+ * @param {[any]}
+ * @return {[String]} TypeName
+ */
+function Type(x) {
+  if (isPrimitive(x)) {
+    return typeof x === 'undefined' ? 'undefined' : _typeof(x);
+  } else if (isArray$2(x, false)) {
+    return 'array';
+  } else {
+    return 'object';
+  }
+}
+
+/**
+ * @_constructor {[constructor]}
+ */
+function TypeFactory(_constructor) {
+  return function (x, Throw) {
+    if ((typeof x === 'undefined' ? 'undefined' : _typeof(x)) === _constructor.name.toLowerCase()) {
+      return true;
+    } else {
+      if (x instanceof _constructor) {
+        return true;
+      } else {
+        if (Throw) TypeError$1(_constructor.name.toLowerCase(), Type(x));
+        return false;
+      }
+    }
+  };
+}
+
+/**
+ * @x  {[any]}
+ */
+function isPrimitive(x) {
+  return (typeof x === 'undefined' ? 'undefined' : _typeof(x)) !== 'object';
+}
+
+/**
+ * @x  {[any]}
+ */
 function isArray$2(x, Throw) {
   if (Array.isArray(x)) {
     return true;
@@ -17634,46 +17676,17 @@ function isArray$2(x, Throw) {
     if (Throw) TypeError$1('array', Type(x));
     return false;
   }
-  // 判断是不是我们自身构建的新 Array
-  // else if (x instanceof this){
-
-  // }
-  // return
 }
 
-function isString$2(x, Throw) {
-  if (typeof x === 'string') {
-    return true;
-  } else {
-    if (x instanceof String) {
-      return true;
-    } else {
-      if (Throw) TypeError$1('string', Type(x));
-      return false;
-    }
-  }
-}
+/**
+ * @x  {[any]}
+ */
+var isFunction$2 = TypeFactory(Function);
 
-function isFunction$2(x, Throw) {
-  if (typeof x === 'function') {
-    return true;
-  } else {
-    if (x instanceof Function) {
-      return true;
-    } else {
-      if (Throw) TypeError$1('function', Type(x));
-      return false;
-    }
-  }
-}
-
-function Type(x) {
-  if ((typeof x === 'undefined' ? 'undefined' : _typeof(x)) !== 'object') {
-    return typeof x === 'undefined' ? 'undefined' : _typeof(x);
-  } else if (Array.isArray(x)) {
-    return 'array';
-  }
-}
+/**
+ * @x  {[any]}
+ */
+var isString$2 = TypeFactory(String);
 
 /**
  * 变量仓库统一存放变量

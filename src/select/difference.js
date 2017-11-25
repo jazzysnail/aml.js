@@ -1,11 +1,12 @@
 import { cloneDeep } from 'lodash-es'
 import { isArray } from '../util/Type.js'
 /**
- * 以数组为入参进行调用
- * @param  {[Array]}
+ * 排除，若元素为原始值则直接排除若为对象则使用识别码进行排除
+ * @arr  {[Array]}
+ * @return {[this]}
  */
 export default function (arr) {
-  if (isArray(arr, 1)) {
+  if (isArray(arr, true)) {
     let _arr = cloneDeep(arr)
     const _key = this.__proto__.key
     if (typeof _key === 'string') {
